@@ -1,0 +1,33 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+<!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.1/firebase-ui-auth.css" />
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDz80yxXUf2ZJr8bV8okICgkYZhd-fnYsQ",
+    authDomain: "spoorthi-news-agency.firebaseapp.com",
+    databaseURL: "https://spoorthi-news-agency.firebaseio.com",
+    projectId: "spoorthi-news-agency",
+    storageBucket: "spoorthi-news-agency.appspot.com",
+    messagingSenderId: "41596075469",
+    appId: "1:41596075469:web:3032ab1b9b3492e3bf1884",
+    measurementId: "G-0N9GML19NY"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
