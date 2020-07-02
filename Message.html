@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="shortcut icon" href="/SNA.png" type="image/x-icon" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -80,51 +81,66 @@
                         var FName = document.getElementById('FN').value;
                         var FMail = document.getElementById('FML').value;
                         var FMsg = document.getElementById('FM').value;
-                        // alert(FName);
-                        document.getElementById('DName').textContent = 'Name : ' + FName;
-                        document.getElementById('DNumber').textContent = 'Verified Phone Number : ' + phoneNumber;
-                        document.getElementById('DMail').textContent = 'Mail ID: ' + FMail;
-                        document.getElementById('DMessage').textContent = 'Message : ' + FMsg;
-                        document.getElementById("Step2").style.display = "none";
-                        document.getElementById("Step3").style.display = "block";
-                        var d = new Date();
-                        var year = d.getFullYear();
-                        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                        var realmonth = months[d.getMonth()];
-                        var date = d.getDate();
-                        var hour = d.getHours();
-                        var min = d.getMinutes();
-                        var sec = d.getSeconds();
-                        var mili = d.getMilliseconds();
-                        var ymd = year + ':' + realmonth;
-                        var tme = String(hour) + ':' + String(min) + ':' + String(sec) + ':' + String(mili);
-                        console.log(FName);
-                        console.log(phoneNumber);
-                        console.log(FMail);
-                        console.log(FMsg);
-                        console.log(ymd);
-                        console.log(hour);
-                        console.log(min);
-                        console.log(sec);
-                        console.log(mili);
-                        console.log(ymd);
-                        console.log(date);
-                        console.log(tme);
+                        var Typed = document.getElementById('Typ').value;
+                        //alert(Typed);
+                        if (Typed == "") {
+                            document.getElementById('errorType').textContent = "Subject is Empty!\nKindly Specify";
+                        }
+                        else if (FName == "") {
+                            document.getElementById('errorType').textContent = "Name is Empty!\nKindly Specify";
+                        }
+                        else if (FMsg == "") {
+                            document.getElementById('errorType').textContent = "Message is Empty\nKindly Specify";
+                        }
+                        else if (FMail == "") {
+                            document.getElementById('errorType').textContent = "Mail ID is Empty\nKindly Specify";
+                        }
+                        else {
+                            // alert(FName);
+                            document.getElementById('DName').textContent = 'Name : ' + FName;
+                            document.getElementById('DNumber').textContent = 'Verified Phone Number : ' + phoneNumber;
+                            document.getElementById('DMail').textContent = 'Mail ID: ' + FMail;
+                            document.getElementById('DMessage').textContent = 'Message : ' + FMsg;
+                            document.getElementById("Step2").style.display = "none";
+                            document.getElementById("Step3").style.display = "block";
+                            var d = new Date();
+                            var year = d.getFullYear();
+                            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                            var realmonth = months[d.getMonth()];
+                            var date = d.getDate();
+                            var hour = d.getHours();
+                            var min = d.getMinutes();
+                            var sec = d.getSeconds();
+                            var mili = d.getMilliseconds();
+                            var ymd = year + ':' + realmonth;
+                            var tme = String(hour) + ':' + String(min) + ':' + String(sec) + ':' + String(mili);
+                            console.log(FName);
+                            console.log(phoneNumber);
+                            console.log(FMail);
+                            console.log(FMsg);
+                            console.log(ymd);
+                            console.log(hour);
+                            console.log(min);
+                            console.log(sec);
+                            console.log(mili);
+                            console.log(ymd);
+                            console.log(date);
+                            console.log(tme);
 
-                        firebase.database().ref().child('TimeStamp/').child(ymd).child(date).child("UserInformation").child(uid).child(tme).update({
-                            UserName: FName,
-                            UserPhone: phoneNumber,
-                            UserMail: FMail,
-                            UserMessage: FMsg
-                        });
-                        firebase.auth().signOut().then(function () {
-                            // Sign-out successful.
-                        }).catch(function (error) {
-                            // An error happened.
-                        });
-                        countdown();
+                            firebase.database().ref().child('TimeStamp/').child(ymd).child(date).child(Typed).child("UserInformation").child(uid).child(tme).update({
+                                UserName: FName,
+                                UserPhone: phoneNumber,
+                                UserMail: FMail,
+                                UserMessage: FMsg
+                            });
+                            firebase.auth().signOut().then(function () {
+                                // Sign-out successful.
+                            }).catch(function (error) {
+                                // An error happened.
+                            });
+                            countdown();
 
-
+                        }
                     }
 
 
@@ -180,7 +196,7 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-0 lg:pt-0" id="nav-content">
             <ul class="list-reset lg:flex justify-end flex-1 items-center">
                 <li class="mr-3">
-                    <a class="inline-block py-2 px-4 text-white no-underline" href="/#AboutUs">About Us</a>
+                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="/#AboutUs">About Us</a>
                 </li>
                 <li class="mr-3">
                     <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
@@ -191,8 +207,8 @@
                         href="/NewsPaper.html">News Paper</a>
                 </li>
                 <li class="mr-3">
-                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-                        href="/#Contact">Contact Us</a>
+                    <a class="inline-block py-2 px-4 text-white no-underline"
+                        href="/contact.html">Contact Us</a>
                 </li>
                 <li class="mr-3">
                     <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
@@ -236,6 +252,20 @@
                     <p class="text-gray-900 text-lg mb-1 font-medium title-font">Step 2</p>
                     <div class="leading-relaxed mb-5 text-gray-600" id="sign-in-status"></div>
                     <div class="leading-relaxed mb-5 text-gray-600" id="phoneNumber"></div>
+                    <div class="leading-relaxed mb-5 text-red-600" id="errorType"></div>
+                    <div class="pb-2">
+                        <label class="leading-relaxed mb-5 text-gray-600" for="Typ">Select a Subject Type:</label>
+                        <select
+                            class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center"
+                            name="Typ" id="Typ">
+                            <option value=""></option>
+                            <option value="New User">New User</option>
+                            <option value="Existing User">Existing User</option>
+                            <option value="Advertisement">Advertisement</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
                     <input
                         class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
                         placeholder="Name" type="text" id="FN">
@@ -247,7 +277,7 @@
                         placeholder="Message" id="FM"></textarea>
                     <button
                         class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                        id="Rec">Button</button>
+                        id="Rec">Submit</button>
                     <p class="text-xs text-gray-500 mt-3">Your Data is Secured with Advance Encryption Method & are in
                         Safe Hands .
                     </p>
